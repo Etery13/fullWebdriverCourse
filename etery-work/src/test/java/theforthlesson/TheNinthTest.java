@@ -14,7 +14,7 @@ import java.util.List;
 public class TheNinthTest extends BaseTest {
 
     @Test
-    public void theNinthTest() {
+    public void theNinthTest1() {
         driver.get("http://localhost/litecart/admin/?app=countries&doc=countries");
         driver.findElement(By.name("username")).sendKeys("admin");
         driver.findElement(By.name("password")).sendKeys("admin");
@@ -38,5 +38,24 @@ public class TheNinthTest extends BaseTest {
             }
         }
         Assert.assertTrue(isListSorted(listOfCountries));
+    }
+
+    @Test
+    public void theNinthTest2(){
+        driver.get("http://localhost/litecart/admin/?app=geo_zones&doc=geo_zones");
+        driver.findElement(By.name("username")).sendKeys("admin");
+        driver.findElement(By.name("password")).sendKeys("admin");
+        driver.findElement(By.name("login")).click();
+        List<WebElement> countries=driver.findElements(By.cssSelector(".dataTable td:nth-child(3) a"));
+        for (int i=1;i<=countries.size();i++){
+            List<String> selectedZones=new LinkedList<>();
+            driver.findElement(By.xpath("(//table[@class='dataTable']//td[3]/a)["+i+"]")).click();
+            List<WebElement> selectors=driver.findElements(By.xpath("//table[@id='table-zones']//select[contains(@name,'zone_code')]"));
+            for (WebElement selector: selectors) {
+                selectedZones.add(selector.findElement(By.xpath(".//option[@selected]")).getText());
+            }
+            Assert.assertTrue(isListSorted(selectedZones));
+            driver.navigate().back();
+        }
     }
 }
