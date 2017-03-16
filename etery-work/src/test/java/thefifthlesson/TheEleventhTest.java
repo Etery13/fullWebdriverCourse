@@ -40,6 +40,6 @@ public class TheEleventhTest extends BaseTest {
         driver.findElement(By.name("email")).sendKeys(email);
         driver.findElement(By.name("password")).sendKeys(password);
         driver.findElement(By.name("login")).click();
-        driver.findElement(By.xpath("//a[text()='Logout']"));
+        driver.findElement(By.xpath("//a[text()='Logout']")).click();
     }
 }
