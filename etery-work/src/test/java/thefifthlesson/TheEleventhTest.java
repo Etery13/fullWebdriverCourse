@@ -15,7 +15,7 @@ import java.util.UUID;
 public class TheEleventhTest extends BaseTest {
 
     @Test
-    public void registration() throws InterruptedException {
+    public void registration() {
         String email = UUID.randomUUID().toString() + "@gmail.com";
         String password = "testtest1";
         driver.get("http://localhost/litecart/");
