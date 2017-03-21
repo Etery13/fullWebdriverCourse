@@ -20,7 +20,6 @@ public class TheThirteenthTest extends BaseTest {
         driver.get("http://localhost/litecart/");
         WebElement quantity = driver.findElement(By.className("quantity"));
         int quantityNumber = new Integer(quantity.getText());
-        int i = 0;
         while (quantityNumber < 2) {
             quantityNumber = new Integer(driver.findElement(By.className("quantity")).getText());
             driver.findElement(By.className("product")).click();
